@@ -8,7 +8,7 @@ require('./routes.js')(rh);
 
 // Server
 http.createServer(function(req, res) {
-	rh.handle(req, res);
+  rh.handle(req, res);
 }).listen(8000, function() {
-	console.log('Starting server at http://localhost:8000');
+  console.log('Starting server at http://localhost:8000');
 });

@@ -24,19 +24,19 @@ module.exports = function(rh) {
 
   // GET /
   rh.get('/', function(req, res) {
-  	response.swigRender(res, templatePath + '/index.html');
+    response.swigRender(res, templatePath + '/index.html');
   });
 
   // GET /contacts
   rh.get('/contacts', function(req, res) {
-  	response.swigRender(res, templatePath + '/contacts/index.html', {
+    response.swigRender(res, templatePath + '/contacts/index.html', {
       contacts: contacts
     });
   });
 
   // GET /contacts/add
   rh.get('/contacts/add', function(req, res) {
-  	response.swigRender(res, templatePath + '/contacts/add.html', contacts);
+    response.swigRender(res, templatePath + '/contacts/add.html');
   });
 
   rh.post('/contacts', function(req, res, data) {
