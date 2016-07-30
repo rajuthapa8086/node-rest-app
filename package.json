@@ -1,0 +1,19 @@
+{
+  "name": "node-rest-app",
+  "version": "1.0.0",
+  "description": "A simple nodejs rest application using Swig template engine.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nodejs",
+    "rest",
+    "core"
+  ],
+  "author": "Raju Thapa <raju.thapa.8086@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "swig": "^1.4.2"
+  }
+}
