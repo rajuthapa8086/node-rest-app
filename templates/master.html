@@ -1,0 +1,48 @@
+{% set site_name = 'Contact Manager' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{% block title %}{% endblock %} - {{ site_name }}</title>
+	<link rel="stylesheet" href="/vendor/bootstrap/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+	<div class="container" id="wrapper">
+		<div class="row main-row" id="header">
+			<div class="col-md-12">
+				<div class="wrap text-center">
+					<a href="/">
+						<h1 class="hidden">{{ site_name }}</h1>
+						<img src="/images/contact-manager.png" alt="Contact Manager Logo" class="img-responsive ">
+					</a>
+				</div>				
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="wrap text-center">
+					<a class="btn btn-default" href="/">Home</a>
+					<a class="btn btn-default" href="/contacts">Contact</a>
+					<a class="btn btn-default" href="/contacts/add">Add Contact</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="row main-row">
+			<div class="col-md-12">
+				<div class="wrap">
+					<h1>{% block title %}{% endblock %}</h1>
+					{% block content %}{% endblock %}					
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="/vendor/jquery/jquery.min.js"></script>
+	<script src="/vendor/bootstrap/bootstrap.min.js"></script>
+	<script src="/js/script.js"></script>
+</body>
+</html>

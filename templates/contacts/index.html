@@ -1,0 +1,52 @@
+{% extends '../master.html' %}
+
+{% block title %}Contacts List{% endblock %}
+
+{% block content %}
+    {% if contacts.length == 0 %}
+    	<div class="alert alert-info">
+    		There are <strong>no</strong> contacts defined.
+    	</div>
+    {% else %}
+        <div class="alert alert-info">
+        	There are <strong>{{ contacts.length }}</strong> defined.
+        </div>
+        <div class="table-responsive">
+        	<table class="table table-bordered table-focus table-striped table-hover">
+        		<thead>
+        			<tr>
+        				<th>ID</th>
+        				<th>Full Name</th>
+        				<th>Email</th>
+        				<th>Options</th>
+        			</tr>
+        		</thead>
+        		<tbody>
+        			{% for contact in contacts %}
+	        			<tr>
+	        				<td>{{ contact.id }}</td>
+	        				<td>{{ contact.full_name }}</td>
+	        				<td>{{ contact.email }}</td>
+	        				<td>
+	        					<a href="/contacts/{{ contact.id}}" class="btn btn-primary btn-sm">Show</a>
+	        					<a href="/contacts/{{ contact.id}}/edit" class="btn btn-primary btn-sm">Edit</a>
+	        					<form style="display: inline;" action="/contacts/{{ contact.id }}" method="post">
+	        						<button class="btn btn-danger btn-sm" type="submit" onclick="return confirm('Are you sure, you want to delete?');">Delete</button>
+	        						<input type="hidden" name="_method" value="delete">
+	        					</form>
+	        				</td>
+	        			</tr>
+        			{% endfor %}
+        		</tbody>
+        		<tfoot>
+        			<tr>
+        				<th>ID</th>
+        				<th>Full Name</th>
+        				<th>Email</th>
+        				<th>Options</th>
+        			</tr>
+        		</tfoot>
+        	</table>
+        </div>
+    {% endif %}
+{% endblock %}
