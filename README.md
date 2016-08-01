@@ -16,6 +16,7 @@ This application is made by using node js and [Swig](http://paularmstrong.github
  * `git clone https://github.com/rajuthapa8086/node-rest-app.git`
  * `cd ./node-rest-app`
  * `cp ./data/config.json.dist ./data/config.json`
+ * `npm install`
  * `node app.js` - or - `nodemon app.js`
 
 
