@@ -33,7 +33,7 @@ rh.staticDir = __dirname + '/public';
 require('./routes.js')(rh);
 
 // Add your routes here
-require('./foo-routes.js');
+require('./foo-routes.js')(rh);
 
 // Server
 http.createServer(function(req, res) {
