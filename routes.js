@@ -3,19 +3,19 @@ var fs = require('fs');
 var response = require('./lib/response.js');
 
 /**
- * @var {string}
+ * @var string
  */
 var templatePath = __dirname + '/templates';
 
 /**
- * @var {string}
+ * @var string
  */
 var dataFilePath = __dirname + '/data/contacts.json';
 
 /**
- * @var {Array}
+ * @var Array
  */
-var contacts = require('./data/contacts.json');
+var contacts = require(dataFilePath);
 
 function getContactById(id) {
   for(var index in contacts) {
@@ -71,11 +71,7 @@ module.exports = function(rh) {
   rh.get('/contacts/{id}', function(req, res, data) {
     var contact = getContactById(data.params.id);
     if (contact == null) {
-      console.log('404 DELETE ' + req.url);
-      res.writeHeader(404, {
-        'Content-Type': 'text/plain',
-      });
-      res.end();      
+      response.notFound();
     } else {
       response.swigRender(res, templatePath + '/contacts/show.html', {
         contact: contact
@@ -87,11 +83,7 @@ module.exports = function(rh) {
   rh.get('/contacts/{id}/edit', function(req, res, data) {
     var contact = getContactById(data.params.id);
     if (contact == null) {
-      console.log('404 DELETE ' + req.url);
-      res.writeHeader(404, {
-        'Content-Type': 'text/plain',
-      });
-      res.end();      
+      response.notFound();
     } else {
       response.swigRender(res, templatePath + '/contacts/edit.html', {
         contact: contact
@@ -103,11 +95,7 @@ module.exports = function(rh) {
   rh.put('/contacts/{id}', function(req, res, data) {
     var contact = getContactById(data.params.id);
     if (contact == null) {
-      console.log('404 DELETE ' + req.url);
-      res.writeHeader(404, {
-        'Content-Type': 'text/plain',
-      });
-      res.end();
+      response.notFound();
     } else {
       var putData = data.parsedBody;
 
@@ -129,11 +117,7 @@ module.exports = function(rh) {
   rh.delete('/contacts/{id}', function(req, res, data) {
     var contact = getContactById(data.params.id);
     if (contact == null) {
-      console.log('404 DELETE ' + req.url);
-      res.writeHeader(404, {
-        'Content-Type': 'text/plain',
-      });
-      res.end();
+      response.notFound();
     } else {
       contacts.splice(contacts.indexOf(contact), 1);
       fs.writeFile(dataFilePath, JSON.stringify(contacts), function (err) {
